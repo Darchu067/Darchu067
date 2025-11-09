@@ -1,0 +1,21 @@
+{
+    "name": "darchu067",
+    "version": "1.0.0",
+    "description": "GitHub Profile Readme Updater",
+    "main": "index.js",
+    "scripts": {
+        "update-readme": "nodemon index.js",
+        "update-readme:deploy": "node index.js",
+        "skills:deploy": "node index.js"
+    },
+    "author": "Murillo Marques Estevão",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.13.1",
+        "dotenv": "^16.6.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}
+
