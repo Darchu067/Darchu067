@@ -4,7 +4,7 @@ on:
   schedule:
     # Executa diariamente às 6h UTC
     - cron: '0 6 * * *'
-  workflow_dispatch: # Permite execução manual
+  workflow_dispatch: # Permite execução manual através do botão "Run workflow"
 
 jobs:
   update-readme:
