@@ -1,0 +1,42 @@
+name: Update README
+
+on:
+  schedule:
+    # Executa diariamente às 6h UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write # Necessário para fazer commit e push
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || github.token }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME || 'Darchu067' }}
+        run: npm run update-readme:deploy
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --staged --quiet || (git commit -m "🤖 Atualização automática do README [skip ci]" && git push)
