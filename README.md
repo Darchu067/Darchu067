@@ -34,6 +34,21 @@ O README é atualizado automaticamente todos os dias às 6h UTC ou manualmente e
   Documentação: [GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart)
 </details>
 
+<details>
+<summary>Atualizar README manualmente (Node)</summary>
+
+1. Instale dependências (apenas na primeira vez): `npm install`
+2. (Opcional) Crie `.env` para evitar rate limit:
+   ```
+   GITHUB_USERNAME=Darchu067
+   GITHUB_TOKEN=seu_token_aqui
+   ```
+   - Crie o token em https://github.com/settings/tokens com permissão `public_repo`
+3. Rode a atualização: `npm run update-readme:deploy`
+
+O script vai buscar dados no GitHub e atualizar as seções de projetos, issues abertas e insights automaticamente.
+</details>
+
 ## Habilidades Técnicas
 
 <!-- SKILLS:START -->

@@ -181,6 +181,62 @@ async function getProjectsWithOpenIssues(repos) {
     .map(proj => `- [${proj.name}](${proj.url}) — issues abertas: ${proj.openIssues}`);
 }
 
+async function getGitHubInsights(repos) {
+  try {
+    // Obter informações do usuário
+    const user = await api.get(`/users/${username}`);
+    
+    // Calcular estatísticas dos repositórios
+    const publicRepos = repos.filter(r => !r.private && !r.fork);
+    const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+    const totalForks = repos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
+    const totalWatchers = repos.reduce((sum, repo) => sum + (repo.watchers_count || 0), 0);
+    
+    // Contar linguagens únicas
+    const languages = new Set();
+    repos.forEach(repo => {
+      if (repo.language) {
+        languages.add(repo.language);
+      }
+    });
+    
+    // Repositório mais estrelado
+    const mostStarred = repos
+      .filter(r => !r.fork && !r.archived && !r.private)
+      .sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0))[0];
+    
+    const insightsLines = [
+      `![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=radical&hide_border=true)`,
+      ``,
+      `![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=radical&hide_border=true)`,
+      ``,
+      `### 📊 Estatísticas`,
+      `- **Repositórios públicos:** ${publicRepos.length}`,
+      `- **Total de estrelas recebidas:** ${totalStars}`,
+      `- **Total de forks:** ${totalForks}`,
+      `- **Linguagens utilizadas:** ${languages.size}`,
+      mostStarred ? `- **Repositório mais estrelado:** [${mostStarred.name}](${mostStarred.html_url}) (${mostStarred.stargazers_count || 0} ⭐)` : ''
+    ].filter(line => line !== '');
+    
+    return insightsLines;
+  } catch (error) {
+    console.error('Erro ao buscar insights:', error.message);
+    // Retorna estatísticas básicas mesmo se falhar
+    const publicRepos = repos.filter(r => !r.private && !r.fork);
+    const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+    
+    return [
+      `![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=radical&hide_border=true)`,
+      ``,
+      `![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=radical&hide_border=true)`,
+      ``,
+      `### 📊 Estatísticas`,
+      `- **Repositórios públicos:** ${publicRepos.length}`,
+      `- **Total de estrelas recebidas:** ${totalStars}`
+    ];
+  }
+}
+
 async function main() {
   try {
     console.log(`Atualizando README para ${username}...\n`);
@@ -208,6 +264,11 @@ async function main() {
     const projectsWithIssues = await getProjectsWithOpenIssues(repos);
     updateSectionInReadme('<!-- ISSUES_OPEN:START -->', '<!-- ISSUES_OPEN:END -->', projectsWithIssues);
     console.log(`  ${projectsWithIssues.length} projetos com issues encontrados`);
+    
+    console.log('\nAtualizando insights do GitHub...');
+    const insights = await getGitHubInsights(repos);
+    updateSectionInReadme('<!-- INSIGHTS:START -->', '<!-- INSIGHTS:END -->', insights);
+    console.log('  Insights atualizados!');
     
     console.log('\n✅ README atualizado com sucesso!');
   } catch (error) {
