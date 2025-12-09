@@ -48,10 +48,24 @@ O README é atualizado automaticamente todos os dias às 6h UTC ou manualmente e
 ## Projetos Relevantes (GitHub)
 
 <!-- PROJECTS:START -->
-- [Monitoramento de Qualidade da Água — Data Pipeline com SQL, Power BI e n8n](https://github.com/Darchu067): Pipeline completo de coleta, tratamento e visualização de dados de qualidade da água.
-- [Análise de Crescimento Bacteriano](https://github.com/Darchu067): Análise de dados de crescimento bacteriano utilizando ferramentas de análise de dados.
+- [Darchu067](https://github.com/Darchu067/Darchu067): Sem descrição.
+- [Darchu0671](https://github.com/Darchu067/Darchu0671): Sem descrição.
+- [sql](https://github.com/Darchu067/sql): Sem descrição.
+- [powerbi](https://github.com/Darchu067/powerbi): Sem descrição.
+- [n8n](https://github.com/Darchu067/n8n): Sem descrição.
+- [data](https://github.com/Darchu067/data): Sem descrição.
 <!-- PROJECTS:END -->
 
 ## Projetos com Issues Abertas
 <!-- ISSUES_OPEN:START -->
 <!-- ISSUES_OPEN:END -->
+
+
+<!-- INSIGHTS:START -->
+## 📊 Estatísticas
+- **Repositórios públicos:** 6
+- **Total de estrelas recebidas:** 0
+- **Total de forks:** 0
+- **Linguagens utilizadas:** 1
+- **Repositório mais estrelado:** [Darchu067](https://github.com/Darchu067/Darchu067) (0 ⭐)
+<!-- INSIGHTS:END -->
