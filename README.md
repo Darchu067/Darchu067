@@ -60,9 +60,9 @@ O README é atualizado automaticamente todos os dias às 6h UTC ou manualmente e
 
 <div align="left">
   <a href="https://github.com/Darchu067">
-    <img src="https://github-readme-stats.vercel.app/api?username=Darchu067&theme=dracula&locale=pt-br&include_all_commits=true&count_private=true&hide_border=true" width="400" style="height: 280px; object-fit: contain; margin-right: 10px;" />
+    <img src="https://github-readme-stats.vercel.app/api?username=Darchu067&theme=dracula&locale=pt-br&include_all_commits=true&count_private=true&hide_border=true" width="400" />
   </a>
   <a href="https://github.com/Darchu067">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Darchu067&theme=dracula&locale=pt_BR&count_private=true&hide_border=true" width="400" style="height: 280px; object-fit: contain;" />
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Darchu067&theme=dracula&locale=pt_BR&count_private=true&hide_border=true" width="400" />
   </a>
 </div>
