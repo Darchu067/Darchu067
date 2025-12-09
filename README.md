@@ -1,6 +1,6 @@
 # Olá, eu sou Murillo Marques Estevão!
 
-São Paulo/ SP • (11) 97038-5727 • murillo.marques067@gmail.com • [github.com/Darchu067](https://github.com/Darchu067)
+[github.com/Darchu067](https://github.com/Darchu067)
 
 ## Objetivo
 
